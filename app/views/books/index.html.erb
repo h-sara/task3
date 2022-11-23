@@ -14,19 +14,18 @@
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table table-hover">
-        <thead class="font-weight-bold">
+        <thead>
           <tr>
-            <td></td>
-            <td>Title</td>
-            <td>Opinion</td>
-            <td></td>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th></th>
           </tr>
         </thead>
         <% @books.each do |book| %>
-        <tbody>
           <tr>
             <td>
-              <%= link_to user_path(@user) do %> <!--投稿した人のuser_pathに飛びたい-->
+              <%= link_to user_path(book.user_id) do %>
                 <%= image_tag book.get_image(80,80) %>
               <% end %>
             </td>
@@ -36,7 +35,6 @@
             <td><%= book.body %></td>
             <td></td>
           </tr>
-        </tbody>
         <% end %>
       </table>
     </div>

@@ -1,8 +1,8 @@
 <div class="container">
-  <% if @book_user.errors.any? %>
-  <h3><%= pluralize(@book_user.errors.count ,"error") %> prohibited this obj from being saved:</h3>
+  <% if @book.errors.any? %>
+  <h3><%= pluralize(@book.errors.count ,"error") %> prohibited this obj from being saved:</h3>
   <ul>
-  <% @book_user.errors.full_messages.each do |message| %>
+  <% @book.errors.full_messages.each do |message| %>
     <li><%= message %></li>
   <% end %>
   </ul>
@@ -10,31 +10,29 @@
   <div class="row">
     <!--左側-->
     <div class="col-md-3">
-      <%= render './left_contents', book: @book_user, user: @user %> <!--部分テンプレート呼出-->
+      <%= render './left_contents', book: @book, user: @user %> <!--部分テンプレート呼出-->
     </div>
     <!--右側-->
     <div class="col-md-8 offset-md-1">
       <h2>Users</h2>
-      <table class="table table-hover">
-        <thead class="font-weight-bold">
+      <table class="table">
+        <thead>
           <tr>
-            <td>image</td>
-            <td>name</td>
-            <td></td>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
           </tr>
         </thead>
         <% @users.each do |user| %>
-        <tbody>
-          <tr>
-            <td>
-              <%= image_tag user.get_profile_image(80,80) %>
-            </td>
-            <td>
-              <%= user.name %>
-            </td>
-            <td><%= link_to "Show", user_path(user.id) %></td>
-          </tr>
-        </tbody>
+        <tr>
+          <td>
+            <%= image_tag user.get_profile_image(80,80) %>
+          </td>
+          <td>
+            <%= user.name %>
+          </td>
+          <td><%= link_to "Show", user_path(user.id) %></td>
+        </tr>
         <% end %>
       </table>
     </div>

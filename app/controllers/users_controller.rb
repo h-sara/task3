@@ -7,7 +7,6 @@ class UsersController < ApplicationController
 
   def index
     @book = Book.new #New book,Book detailの所の@book
-    @books = Book.all
     @user = current_user #User infoの所の@user
     @users = User.all #Usersの所の@users
   end

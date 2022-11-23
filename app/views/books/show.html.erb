@@ -28,20 +28,20 @@
                 <%= link_to @booker.title, book_path(@booker.id) %>
               </td>
               <td><%= @booker.body %></td>
+              <% if @booker.user == current_user %>
               <td>
-                <% if @booker.user == current_user %>
-                  <%= link_to(edit_book_path(@booker.id), class: "btn btn-success") do %>
-                    Edit
-                  <% end %>
+                <%= link_to(edit_book_path(@booker.id), class: "btn btn-success") do %>
+                  Edit
                 <% end %>
               </td>
+              <% end %>
+              <% if @booker.user == current_user %>
               <td>
-                <% if @booker.user == current_user %>
-                  <%= link_to(book_path(@booker.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？") do %>
-                    Destroy
-                  <% end %>
+                <%= link_to(book_path(@booker.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？") do %>
+                  Destroy
                 <% end %>
               </td>
+              <% end %>
             </tr>
           </tbody>
         </table>
