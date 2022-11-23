@@ -1,2 +1,39 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <!--左側-->
+    <div class="col-md-3">
+      <%= render './left_contents', book: @book, user: @user %> <!--部分テンプレート呼出-->
+    </div>
+    <!--右側-->
+    <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <%= link_to(user_path(@booker.user_id)) do %>
+                  <%= image_tag @user.get_profile_image(100,100) %><br>
+                  <%= @user.name %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to @booker.title, book_path(@booker.id) %>
+              </td>
+              <td><%= @booker.body %></td>
+              <td>
+                <%= link_to(edit_book_path(@booker.id), class: "btn btn-success") do %>
+                  Edit
+                <% end %>
+              </td>
+              <td>
+                <%= link_to(book_path(@booker.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に消しますか？") do %>
+                  Destroy
+                <% end %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
