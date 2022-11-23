@@ -3,7 +3,7 @@
   <h2>User info</h2><br>
   <%= image_tag user.get_profile_image(100,100) %>
   <table class="table">
-    <tbody>
+    <tbody class="font-weight-bold">
       <tr>
         <td>name</td>
         <td><%= user.name %></td>
@@ -16,7 +16,7 @@
   </table>
   <%= link_to(edit_user_path(user), class: "btn btn-outline-secondary btn-block") do %>
     <i class="fa-solid fa-user-gear"></i>
-    なぜかアイコンが表示されない
+    あいこん
   <% end %>
   <h2>New book</h2>
   <%= form_with model: book do |f| %>

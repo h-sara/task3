@@ -1,4 +1,12 @@
 <div class="container">
+  <% if @book_user.errors.any? %>
+  <h3><%= pluralize(@book_user.errors.count ,"error") %> prohibited this obj from being saved:</h3>
+  <ul>
+  <% @book_user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+  <% end %>
   <div class="row">
     <!--左側-->
     <div class="col-md-3">
@@ -7,12 +15,12 @@
     <!--右側-->
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
-      <table class="table table-hover">
-        <thead>
+      <table class="table table-hover ">
+        <thead class="font-weight-bold">
           <tr>
             <td></td>
-            <td><b>Title</b></td>
-            <td><b>Opinion</b></td>
+            <td>Title</td>
+            <td>Opinion</td>
             <td></td>
           </tr>
         </thead>

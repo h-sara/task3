@@ -1,17 +1,25 @@
 <div class="container">
+  <% if @book_user.errors.any? %>
+  <h3><%= pluralize(@book_user.errors.count ,"error") %> prohibited this obj from being saved:</h3>
+  <ul>
+  <% @book_user.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+  </ul>
+  <% end %>
   <div class="row">
     <!--左側-->
     <div class="col-md-3">
-      <%= render './left_contents', book: @book, user: @user %> <!--部分テンプレート呼出-->
+      <%= render './left_contents', book: @book_user, user: @user %> <!--部分テンプレート呼出-->
     </div>
     <!--右側-->
-    <div class="col-md-8">
-      <h2>User</h2>
+    <div class="col-md-8 offset-md-1">
+      <h2>Users</h2>
       <table class="table table-hover">
-        <thead>
+        <thead class="font-weight-bold">
           <tr>
-            <td><b>image</b></td>
-            <td><b>name</b></td>
+            <td>image</td>
+            <td>name</td>
             <td></td>
           </tr>
         </thead>
